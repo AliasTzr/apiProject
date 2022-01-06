@@ -91,21 +91,3 @@ try{
     print_r($erreur);
     
 }
-
-
-
-
-/*
-header('Content-Type: application/json');
-try{
-    $connect = pg_connect("host=localhost dbname=Product user=postgres password=root") or die("FAILED");
-    $retour["succes"]= true;
-} catch(Exception $e){
-    $retour["succes"]= false;
-}
-
-$req = $connect->prepare("SELECT  FROM `produits`");
-$req->execute();
-$result = $req->fetchAll();
-var_dump($result);
-//echo json_encode($retour);*/
