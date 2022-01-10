@@ -61,7 +61,7 @@ function updateInStock($inStock, $id)
     {
         pg_query($connect, "UPDATE products SET inStock = TRUE WHERE id = $id");
     }
-    return json_encode(['message'=> 'Modified!']) #"{ message: 'Modified!' }";
+    return json_encode(['message'=> 'Modified!']); #"{ message: 'Modified!' }";
 }
 
 function deleteDataFromUser($id)
