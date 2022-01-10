@@ -4,7 +4,7 @@
     $statut = pg_query($connect, "SELECT * FROM products");
     $produits = pg_fetch_all($statut);
     $infos = sendToUser($produits);
-    echo "{products: $infos}";
+    echo json_encode(['produits'=> $infos]); #"{products: $infos}";
  }
 
  function getProductById($id){
@@ -33,21 +33,21 @@ function updateName($name, $id)
     $connect = connexion();
     //$stat = pg_update($connect, 'produits', array('id'=>$id), array('name'=>$name));
     pg_query($connect, "UPDATE products SET name = '$name' WHERE id = $id");
-    return "{ message: 'Modified!' }";
+    return json_encode(['message'=> 'Modified!']); #"{ message: 'Modified!' }";
 }
 
 function updateDescription($description, $id)
 {
     $connect = connexion();
     pg_query($connect, "UPDATE products SET description = '$description' WHERE id = $id");
-    return "{ message: 'Modified!' }";
+    return json_encode(['message'=> 'Modified!']); #"{ message: 'Modified!' }";
 }
 
 function updatePrice($price, $id)
 {
     $connect = connexion();
     pg_query($connect, "UPDATE products SET price = '$price' WHERE id = $id");
-    return "{ message: 'Modified!' }";
+    return json_encode(['message'=> 'Modified!']); #"{ message: 'Modified!' }";
 }
 
 function updateInStock($inStock, $id)
@@ -61,14 +61,14 @@ function updateInStock($inStock, $id)
     {
         pg_query($connect, "UPDATE products SET inStock = TRUE WHERE id = $id");
     }
-    return "{ message: 'Modified!' }";
+    return json_encode(['message'=> 'Modified!']) #"{ message: 'Modified!' }";
 }
 
 function deleteDataFromUser($id)
 {
     $connect = connexion();
     pg_query($connect, "DELETE FROM products WHERE id = $id");
-    return "{ message: 'Deleted!' }";
+    return json_encode(['message'=> 'Deleted!']); #"{ message: 'Deleted!' }";
 }
 
 function connexion(){
