@@ -3,8 +3,8 @@
     $connect = connexion();
     $statut = pg_query($connect, "SELECT * FROM products");
     $produits = pg_fetch_all($statut);
-    $infos = sendToUser($produits);
-    echo json_encode($infos); #"{products: $infos}" json_encode(['produits'=> $infos]);;
+    echo sendToUser($produits);
+    #echo json_encode($infos); #"{products: $infos}" json_encode(['produits'=> $infos]);;
  }
 
  function getProductById($id){
