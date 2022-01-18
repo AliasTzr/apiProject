@@ -36,8 +36,8 @@ try{
             if(intval($url[1])>0)
             {
                 $infos = getProductById($url[1]);
-                echo "{product: $infos}";
-                $info = json_decode($infos);
+                echo $infos;
+                //$info = json_decode($infos);
                 if(!empty($_POST['newName']) AND $_POST['newName'] != $info[0]->name)
                 {
                     $message = updateName($_POST['newName'], $info[0]->id);
