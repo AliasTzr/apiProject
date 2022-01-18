@@ -37,7 +37,7 @@ try{
             {
                 $infos = getProductById($url[1]);
                 echo $infos;
-                echo $info[0]->name;
+                echo $info->name;
                 //$info = json_decode($infos);
                 if(!empty($_POST['newName']) AND $_POST['newName'] != $info[0]->name)
                 {
