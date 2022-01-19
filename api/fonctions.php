@@ -1,7 +1,7 @@
 <?php
  function getProducts(){
     $connect = connexion();
-    $statut = pg_query($connect, "SELECT * FROM products");
+    $statut = pg_query($connect, "SELECT * FROM products ORDER BY id");
     $produits = pg_fetch_all($statut);
     echo sendToUser($produits);
     #echo json_encode($infos); #"{products: $infos}" json_encode(['produits'=> $infos]);;
