@@ -15,11 +15,7 @@ try{
             getProducts();
             if(!empty($_POST['name']) AND !empty($_POST['description']) AND !empty($_POST['price']) AND !empty($_POST['inStock']))
             {
-                $name = $_POST['name'];
-                $description = $_POST['description'];
-                $price = intval($_POST['price']);
-                $inStock = $_POST['inStock'][0];
-                insertDataFromUser($name, $description, $price, $inStock);
+                insertDataFromUser($_POST['name'], $_POST['description'], $_POST['price'], $_POST['inStock']);
             }
         }
         else if(!empty($url[1]))
