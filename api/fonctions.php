@@ -64,7 +64,7 @@ function insertDataFromUser($name, $description, $price, $inStock)
 //    return json_encode(['message'=> 'Modified!']); #"{ message: 'Modified!' }";
 //}
 
-function updateInDataFromUser($name, $price, $description, $inStock, $id)
+function updateDataFromUser($name, $price, $description, $inStock, $id)
 {
     $connect = connexion();
     if($inStock[0] == "f")
