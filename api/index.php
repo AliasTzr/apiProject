@@ -40,7 +40,7 @@ try{
                 //$info = json_decode($infos);
                 if(!empty($_POST['newName']) AND !empty($_POST['newPrice']) AND !empty($_POST['newDescription']) AND !empty($_POST['newInStock']))
                 {
-                    $message = updateInDataFromUser($_POST['newName'], $_POST['newPrice'], $_POST['newDescription'], $_POST['newInStock'], $info[0]->id);
+                    $message = updateDataFromUser($_POST['newName'], $_POST['newPrice'], $_POST['newDescription'], $_POST['newInStock'], $info[0]->id);
                     echo $message;
                 }
                 //if(!empty($_POST['newName']) AND $_POST['newName'] != $info[0]->name)
