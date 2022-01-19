@@ -37,9 +37,9 @@ try{
             {
                 $infos = getProductById($url[1]);
                 echo $infos;
-                //$info = json_decode($infos);
                 if(!empty($_POST['newName']) AND !empty($_POST['newPrice']) AND !empty($_POST['newDescription']) AND !empty($_POST['newInStock']))
                 {
+                    $info = json_decode($infos);
                     $message = updateDataFromUser($_POST['newName'], $_POST['newPrice'], $_POST['newDescription'], $_POST['newInStock'], $info[0]->id);
                     echo $message;
                 }
@@ -60,6 +60,7 @@ try{
                 //}
                 if(!empty($_POST['deleteId']))
                 {
+                    $info = json_decode($infos);
                     if($_POST['deleteId'] == $info[0]->id)
                     {
                         $message = deleteDataFromUser($info[0]->id);
