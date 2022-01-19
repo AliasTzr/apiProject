@@ -29,9 +29,9 @@ function insertDataFromUser($name, $description, $price, $inStock)
  
         $val = true;
         if( $inStock == "t"){
-            $val = true;
+            $val = TRUE;
         }else{
-            $val = false;
+            $val = FALSE;
         }
         pg_query($connect, "INSERT INTO products (name, description, price, inStock) VALUES ($name, $price, $description, "$val")");
         //pg_insert($connect, 'products', array('name'=>$name, 'description'=>$description, 'price'=>$price, 'inStock'=>$inStock));
