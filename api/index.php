@@ -38,21 +38,26 @@ try{
                 $infos = getProductById($url[1]);
                 echo $infos;
                 //$info = json_decode($infos);
-                if(!empty($_POST['newName']) AND $_POST['newName'] != $info[0]->name)
+                if(!empty($_POST['newName']) AND !empty($_POST['newPrice']) AND !empty($_POST['newDescription']) AND !empty($_POST['newInStock']))
                 {
-                    $message = updateName($_POST['newName'], $info[0]->id);
+                    $message = updateInDataFromUser($_POST['newName'], $_POST['newPrice'], $_POST['newDescription'], $_POST['newInStock'], $info[0]->id);
                     echo $message;
                 }
-                if(!empty($_POST['newDescription']) AND $_POST['newDescription'] != $info[0]->description)
-                {
-                    $message = updatePrice($_POST['newPrice'], $info[0]->id);
-                    echo $message;
-                }
-                if(!empty($_POST['newInStock']) AND $_POST['newDescription'] != $info[0]->description)
-                {
-                    $message = updateInStock($_POST['newInStock'], $info[0]->id);
-                    echo $message;
-                }
+                //if(!empty($_POST['newName']) AND $_POST['newName'] != $info[0]->name)
+                //{
+                //    $message = updateName($_POST['newName'], $info[0]->id);
+                //    echo $message;
+                //}
+                //if(!empty($_POST['newDescription']) AND $_POST['newDescription'] != $info[0]->description)
+                //{
+                //    $message = updatePrice($_POST['newPrice'], $info[0]->id);
+                //    echo $message;
+                //}
+                //if(!empty($_POST['newInStock']) AND $_POST['newDescription'] != $info[0]->description)
+                //{
+                //    $message = updateInStock($_POST['newInStock'], $info[0]->id);
+                //    echo $message;
+                //}
                 if(!empty($_POST['deleteId']))
                 {
                     if($_POST['deleteId'] == $info[0]->id)
