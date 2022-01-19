@@ -18,24 +18,17 @@
 function insertDataFromUser($name, $description, $price, $inStock)
 {
     $connect = connexion();
-    //if($inStock == "f")
-    //{
+    if($inStock == "f")
+    {
         //pg_query($connect, "INSERT INTO products (name, description, price, inStock) VALUES ('$name', $price, '$description', FALSE)");
-        //pg_insert($connect, 'products', array('name'=>$name, 'description'=>$description, 'price'=>$price, inStock=>FALSE));
-    //}
-    //if($inStock == "t")
-    //{
+        pg_insert($connect, 'products', array('name'=>$name, 'description'=>$description, 'price'=>$price, inStock=>FALSE));
+    }
+    if($inStock == "t")
+    {
  
- 
-        $val = true;
-        if( $inStock == "t"){
-            $val = TRUE;
-        }else{
-            $val = FALSE;
-        }
-        pg_query($connect, "INSERT INTO products (name, description, price, inStock) VALUES ($name, $price, $description, $val)");
-        //pg_insert($connect, 'products', array('name'=>$name, 'description'=>$description, 'price'=>$price, 'inStock'=>$inStock));
-    //}
+        //pg_query($connect, "INSERT INTO products (name, description, price, inStock) VALUES ($name, $price, $description, $val)");
+        pg_insert($connect, 'products', array('name'=>$name, 'description'=>$description, 'price'=>$price, 'inStock'=>$inStock));
+    }
 }
 
 //function updateName($name, $id)
@@ -96,7 +89,7 @@ function deleteDataFromUser($id)
 }
 
 function connexion(){
-    return pg_connect("host=ec2-34-206-245-175.compute-1.amazonaws.com dbname=dfhg0uoil21hl7 user=jzvzsfcurpgzvv password=    fa4871d3ecd117e4da21a28807c9b9fe20f26ec9adb0788ef03169a2b026399b");
+    return pg_connect("host=ec2-34-206-245-175.compute-1.amazonaws.com dbname=dfhg0uoil21hl7 user=jzvzsfcurpgzvv password=fa4871d3ecd117e4da21a28807c9b9fe20f26ec9adb0788ef03169a2b026399b");
 }
 
 function sendToUser($infos){
