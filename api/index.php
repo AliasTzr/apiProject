@@ -15,25 +15,11 @@ try{
             getProducts();
             if(!empty($_POST['name']) AND !empty($_POST['description']) AND !empty($_POST['price']) AND !empty($_POST['inStock']))
             {
-                if(intval($_POST['price'])>0)
-                {
-                    if($_POST['inStock'][0] == "f" OR $_POST['inStock'][0] == "t")
-                    {
-                        $name = $_POST['name'];
-                        $description = $_POST['description'];
-                        $price = intval($_POST['price']);
-                        $inStock = $_POST['inStock'][0];
-                        insertDataFromUser($name, $description, $price, $inStock);
-                    }
-                    else
-                    {
-                        throw new Exception ("Valeur boolénne incorrecte");
-                    }
-                }
-                else
-                {
-                    throw new Exception ("prix incorrecte");
-                }
+                $name = $_POST['name'];
+                $description = $_POST['description'];
+                $price = intval($_POST['price']);
+                $inStock = $_POST['inStock'][0];
+                insertDataFromUser($name, $description, $price, $inStock);
             }
         }
         else if(!empty($url[1]))
