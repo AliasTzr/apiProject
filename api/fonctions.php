@@ -4,7 +4,6 @@
     $statut = pg_query($connect, "SELECT * FROM products ORDER BY id");
     $produits = pg_fetch_all($statut);
     echo sendToUser($produits);
-    #echo json_encode($infos); #"{products: $infos}" json_encode(['produits'=> $infos]);;
  }
 
  function getProductById($id){
@@ -24,41 +23,6 @@ function insertDataFromUser($name, $description, $price, $inStock)
     $result = pg_execute($connect, "my_query", array($name, $description, $price, $instock));
 }
 
-//function updateName($name, $id)
-//{
-//    $connect = connexion();
-    //$stat = pg_update($connect, 'produits', array('id'=>$id), array('name'=>$name));
-//    pg_query($connect, "UPDATE products SET name = '$name' WHERE id = $id");
-//    return json_encode(['message'=> 'Modified!']); #"{ message: 'Modified!' }";
-//}
-
-//function updateDescription($description, $id)
-//{
-//    $connect = connexion();
-//    pg_query($connect, "UPDATE products SET description = '$description' WHERE id = $id");
-//    return json_encode(['message'=> 'Modified!']); #"{ message: 'Modified!' }";
-//}
-
-//function updatePrice($price, $id)
-//{
-//    $connect = connexion();
-//    pg_query($connect, "UPDATE products SET price = '$price' WHERE id = $id");
-//    return json_encode(['message'=> 'Modified!']); #"{ message: 'Modified!' }";
-//}
-
-//function updateInStock($inStock, $id)
-//{
-//    $connect = connexion();
-//    if($inStock[0] == "f")
-//    {
-//        pg_query($connect, "UPDATE products SET inStock = FALSE WHERE id = $id");
-//    }
-//    if($inStock[0] == "t")
-//    {
-//        pg_query($connect, "UPDATE products SET inStock = TRUE WHERE id = $id");
-//    }
-//    return json_encode(['message'=> 'Modified!']); #"{ message: 'Modified!' }";
-//}
 
 function updateDataFromUser($name, $price, $description, $inStock, $id)
 {
