@@ -62,22 +62,19 @@ function insertDataFromUser($name, $description, $price, $inStock)
 
 function updateDataFromUser($name, $price, $description, $inStock, $id)
 {
+    $instock = 'TRUE';
+    if($inStock == 'f') $instock = 'FALSE';
     $connect = connexion();
-    if($inStock[0] == "f")
-    {
-        pg_query($connect, "UPDATE products SET name='$name', price='$price', description='$description', inStock = FALSE WHERE id = $id");
-    }
-    if($inStock[0] == "t")
-    {
-        pg_query($connect, "UPDATE products SET name='$name', price='$price', description='$description', inStock = TRUE WHERE id = $id");
-    }
+    $result = pg_prepare($connect, "my_query", 'UPDATE products SET name=$1, description=$3, price=$2, inStock =$4 WHERE id=$5');
+    $result = pg_execute($connect, "my_query", array($name, $description, $price, $instock, $id));
     return json_encode(['message'=> 'Modified!']); #"{ message: 'Modified!' }";
 }
 
 function deleteDataFromUser($id)
 {
     $connect = connexion();
-    pg_query($connect, "DELETE FROM products WHERE id = $id");
+    $result = pg_prepare($connect, "my_query", 'DELETE FROM products WHERE id = $1');
+    $result = pg_execute($connect, "my_query", array($id));
     return json_encode(['message'=> 'Deleted!']); #"{ message: 'Deleted!' }";
 }
 
