@@ -65,7 +65,7 @@ function updateDataFromUser($name, $price, $description, $inStock, $id)
     $instock = 'TRUE';
     if($inStock == 'f') $instock = 'FALSE';
     $connect = connexion();
-    $result = pg_prepare($connect, "my_query", 'UPDATE products SET name=$1, description=$3, price=$2, inStock =$4 WHERE id=$5');
+    $result = pg_prepare($connect, "my_query", 'UPDATE products SET name=$1, description=$2, price=$3, inStock =$4 WHERE id=$5');
     $result = pg_execute($connect, "my_query", array($name, $description, $price, $instock, $id));
     return json_encode(['message'=> 'Modified!']); #"{ message: 'Modified!' }";
 }
