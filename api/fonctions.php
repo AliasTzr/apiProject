@@ -21,13 +21,13 @@ function insertDataFromUser($name, $description, $price, $inStock)
     if($inStock == "f")
     {
         //pg_query($connect, "INSERT INTO products (name, description, price, inStock) VALUES ('$name', $price, '$description', FALSE)");
-        pg_insert($connect, 'products', array('name'=>$name, 'description'=>$description, 'price'=>$price, 'inStock'=>FALSE));
+        pg_insert($connect, 'products', array('name'=>$name, 'description'=>$description, 'price'=>$price, inStock=>FALSE));
     }
     if($inStock == "t")
     {
  
         //pg_query($connect, "INSERT INTO products (name, description, price, inStock) VALUES ($name, $price, $description, $val)");
-        pg_insert($connect, 'products', array('name'=>$name, 'description'=>$description, 'price'=>$price, 'inStock'=>TRUE));
+        pg_insert($connect, 'products', array('name'=>$name, 'description'=>$description, 'price'=>$price, inStock=>TRUE));
     }
 }
 
