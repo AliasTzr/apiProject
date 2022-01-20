@@ -18,17 +18,19 @@
 function insertDataFromUser($name, $description, $price, $inStock)
 {
     $connect = connexion();
-    if($inStock == "f")
-    {
-        pg_query($connect, "INSERT INTO products (name, description, price, inStock) VALUES ('$name', $price, '$description', FALSE)");
-        //pg_insert($connect, 'products', array('name'=>$name, 'description'=>$description, 'price'=>$price, 'inStock'=>FALSE));
-    }
-    if($inStock == "t")
-    {
+    $result = pg_prepare($connect, "my_query", 'INSERT INTO products (name, description, price, inStock) VALUES ($1, $2, $3, $4)');
+    $result = pg_execute($connect, "my_query", array($name, $description, $price, ($inStock == 't')));
+//     if($inStock == "f")
+//     {
+//         pg_query($connect, "INSERT INTO products (name, description, price, inStock) VALUES ('$name', $price, '$description', FALSE)");
+//         //pg_insert($connect, 'products', array('name'=>$name, 'description'=>$description, 'price'=>$price, 'inStock'=>FALSE));
+//     }
+//     if($inStock == "t")
+//     {
  
-        pg_query($connect, "INSERT INTO products (name, description, price, inStock) VALUES ('$name', $price, '$description', TRUE)");
-        //pg_insert($connect, 'products', array('name'=>$name, 'description'=>$description, 'price'=>$price, 'inStock'=>TRUE));
-    }
+//         pg_query($connect, "INSERT INTO products (name, description, price, inStock) VALUES ('$name', $price, '$description', TRUE)");
+//         //pg_insert($connect, 'products', array('name'=>$name, 'description'=>$description, 'price'=>$price, 'inStock'=>TRUE));
+//     }
 }
 
 //function updateName($name, $id)
