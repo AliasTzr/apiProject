@@ -17,8 +17,8 @@
 
 function insertDataFromUser($name, $description, $price, $inStock)
 {
-    $instock = TRUE;
-    if($inStock == 'f') $instock = FALSE;
+    $instock = 'TRUE';
+    if($inStock == 'f') $instock = 'FALSE';
     $connect = connexion();
     $result = pg_prepare($connect, "my_query", 'INSERT INTO products (name, description, price, inStock) VALUES ($1, $2, $3, $4)');
     $result = pg_execute($connect, "my_query", array($name, $description, $price, $instock));
